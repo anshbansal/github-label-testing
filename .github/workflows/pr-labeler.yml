@@ -28,3 +28,17 @@ jobs:
           github_token: ${{ github.token }}
           labels: |
             priority +1
+      - uses: actions-ecosystem/action-add-labels@v1.1.0
+        if: 
+          ${{ 
+            !contains(
+              fromJson('[
+                "jjohnson1994"
+              ]'), 
+              github.actor
+            ) 
+          }}
+        with:
+          github_token: ${{ github.token }}
+          labels: |
+            community-contribution
